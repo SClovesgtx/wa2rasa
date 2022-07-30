@@ -5,7 +5,10 @@ import typer
 from rich.console import Console
 from rich.theme import Theme
 
-from wa2rasa import read_wa_object, intents_parser, entities_parser, save_rasa_yaml_file
+try:
+    from wa2rasa import read_wa_object, intents_parser, entities_parser, save_rasa_yaml_file
+except: # for pytest
+    from .wa2rasa import read_wa_object, intents_parser, entities_parser, save_rasa_yaml_file
 
 app = typer.Typer(
     name="wa2rasa",

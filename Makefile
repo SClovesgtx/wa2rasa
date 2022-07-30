@@ -56,4 +56,4 @@ cyclomatic-complexity:
 	$ radon cc wa2rasa/wa2rasa/*.py -a
 
 test:
-	$ pytest wa2rasa/tests/test_wa2rasa.py --rootdir wa2rasa/
+	$ pytest wa2rasa/tests/test_wa2rasa.py --rootdir wa2rasa/ -v
