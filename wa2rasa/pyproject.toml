@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "wa2rasa"
-version = "0.1.1"
+version = "0.1.2"
 license = "MIT"
 readme = "README.rst"
 description = "Convert Watson Assistant skill object to rasa nlu.yml file."
 homepage = "https://github.com/SClovesgtx/wa2rasa"
 repository = "https://github.com/SClovesgtx/wa2rasa"
-keywords = ["clusterization", "fuzzy", "similarity", "text"]
+keywords = ["rasa", "watson", "nlu", "convert", "translate"]
 authors = ["Cloves Paiva <clovesgtx@gmail.com>"]
 
 classifiers=[

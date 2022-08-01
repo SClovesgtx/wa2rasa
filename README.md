@@ -25,7 +25,7 @@ $ wa2rasa convert <path_to_your_wa_object>/ <directory_to_store_rasa_nlu_file>/
 
 Here a gif for you:
 
-![how to use package](https://media.giphy.com/media/zQxXPs9HhNJHZBI1Iy/giphy.gif)
+![how to use the wa2rasa](https://media.giphy.com/media/zQxXPs9HhNJHZBI1Iy/giphy.gif)
 
 # Author
 

@@ -32,9 +32,7 @@ Just run the following command:
 Here a gif for you:
 
 .. figure:: https://media.giphy.com/media/zQxXPs9HhNJHZBI1Iy/giphy.gif
-   :alt: how to use package
-
-   how to use package
+   :alt: how to use the wa2rasa
 
 Author
 ======
