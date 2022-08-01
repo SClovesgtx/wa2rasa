@@ -14,6 +14,7 @@ app = typer.Typer(
     name="wa2rasa",
     add_completion=False,
     help="Convert Watson Assistant skill object to rasa nlu.yml file.",
+    pretty_exceptions_show_locals=False,
 )
 
 custom_theme = Theme({"info": "dim cyan", "warning": "magenta", "danger": "bold red"})
@@ -42,7 +43,11 @@ def convert(
     """
     Convert Watson Assistant skill object to rasa nlu.yml file.
     """
-    wa_object = read_wa_object(file_path=wa_file)
+    file_path = pathlib.Path(wa_file)
+    if not file_path.absolute().is_file():
+        console.print(f"File not found.", style="danger")
+        raise Exception(f"Please verify that the file {str(file_path.absolute())} exists.")
+    wa_object = read_wa_object(file_path=file_path.absolute())
     intents = wa_object.get("intents", [])
     entities = wa_object.get("entities", [])
     if intents:
@@ -52,15 +57,21 @@ def convert(
     nlu_yml_obj = {"version": rasa_version, "nlu": intents + entities}
     if not entities:
         console.print(
-            "[warning]Warning: No entity found in your Watson Assistant object.[/warning]"
+            ":warning: No entity found in your Watson Assistant object.",
+            style="warning"
         )
     if not intents:
         console.print(
-            "[warning]Warning: No entities found in your Watson Assistant object.[/warning]"
+            ":warning: No entities found in your Watson Assistant object.",
+            style="warning"
         )
-    file_path = pathlib.Path(save_in, "nlu.yml")
-    save_rasa_yaml_file(file_path=file_path, object=nlu_yml_obj)
-    console.print(f"Output saved in '{file_path}'.", style="info")
+    file_path2 = pathlib.Path(save_in)
+    if not file_path2.is_dir():
+        console.print(f"Directory not found.", style="danger")
+        raise Exception(f"Please verify that the directory {str(file_path2.absolute())} exists.")
+    file_path2 = pathlib.Path(file_path2.absolute(), "nlu.yml")
+    save_rasa_yaml_file(file_path=file_path2, object=nlu_yml_obj)
+    console.print(f"Output saved in '{file_path2}'.", style="info")
 
 
 if __name__ == "__main__":
