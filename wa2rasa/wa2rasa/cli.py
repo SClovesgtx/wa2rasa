@@ -6,9 +6,19 @@ from rich.console import Console
 from rich.theme import Theme
 
 try:
-    from wa2rasa import read_wa_object, intents_parser, entities_parser, save_rasa_yaml_file
-except: # for pytest
-    from .wa2rasa import read_wa_object, intents_parser, entities_parser, save_rasa_yaml_file
+    from wa2rasa import (
+        read_wa_object,
+        intents_parser,
+        entities_parser,
+        save_rasa_yaml_file,
+    )
+except:  # for pytest
+    from .wa2rasa import (
+        read_wa_object,
+        intents_parser,
+        entities_parser,
+        save_rasa_yaml_file,
+    )
 
 app = typer.Typer(
     name="wa2rasa",
@@ -46,7 +56,9 @@ def convert(
     file_path = pathlib.Path(wa_file)
     if not file_path.absolute().is_file():
         console.print(f"File not found.", style="danger")
-        raise Exception(f"Please verify that the file {str(file_path.absolute())} exists.")
+        raise Exception(
+            f"Please verify that the file {str(file_path.absolute())} exists."
+        )
     wa_object = read_wa_object(file_path=file_path.absolute())
     intents = wa_object.get("intents", [])
     entities = wa_object.get("entities", [])
@@ -58,17 +70,19 @@ def convert(
     if not entities:
         console.print(
             ":warning: No entity found in your Watson Assistant object.",
-            style="warning"
+            style="warning",
         )
     if not intents:
         console.print(
             ":warning: No entities found in your Watson Assistant object.",
-            style="warning"
+            style="warning",
         )
     file_path2 = pathlib.Path(save_in)
     if not file_path2.is_dir():
         console.print(f"Directory not found.", style="danger")
-        raise Exception(f"Please verify that the directory {str(file_path2.absolute())} exists.")
+        raise Exception(
+            f"Please verify that the directory {str(file_path2.absolute())} exists."
+        )
     file_path2 = pathlib.Path(file_path2.absolute(), "nlu.yml")
     save_rasa_yaml_file(file_path=file_path2, object=nlu_yml_obj)
     console.print(f"Output saved in '{file_path2}'.", style="info")

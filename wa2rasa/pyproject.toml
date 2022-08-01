@@ -1,8 +1,21 @@
 [tool.poetry]
 name = "wa2rasa"
-version = "0.1.0"
+version = "0.1.1"
+license = "MIT"
+readme = "README.rst"
 description = "Convert Watson Assistant skill object to rasa nlu.yml file."
+homepage = "https://github.com/SClovesgtx/wa2rasa"
+repository = "https://github.com/SClovesgtx/wa2rasa"
+keywords = ["clusterization", "fuzzy", "similarity", "text"]
 authors = ["Cloves Paiva <clovesgtx@gmail.com>"]
+
+classifiers=[
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Operating System :: OS Independent",
+    ]
 
 [tool.poetry.dependencies]
 python = "^3.8"
